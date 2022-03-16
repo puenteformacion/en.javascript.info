@@ -1,48 +1,12 @@
 # File and FileReader
 
-A [File](https://www.w3.org/TR/FileAPI/#dfn-file) object inherits from `Blob` and is extended with filesystem-related capabilities.
-
-There are two ways to obtain it.
-
-First, there's a constructor, similar to `Blob`:
-
-```js
-new File(fileParts, fileName, [options])
-```
-
-- **`fileParts`** -- is an array of Blob/BufferSource/String values.
-- **`fileName`** -- file name string.
-- **`options`** -- optional object:
-    - **`lastModified`** -- the timestamp (integer date) of last modification.
-
-Second, more often we get a file from `<input type="file">` or drag'n'drop or other browser interfaces. In that case, the file gets this information from OS.
-
-As `File` inherits from `Blob`, `File` objects have the same properties, plus:
-- `name` -- the file name,
-- `lastModified` -- the timestamp of last modification.
-
-That's how we can get a `File` object from `<input type="file">`:
+A [File]e="file">`:
 
 ```html run
 <input type="file" onchange="showFile(this)">
 
 <script>
-function showFile(input) {
-  let file = input.files[0];
-
-  alert(`File name: ${file.name}`); // e.g my.png
-  alert(`Last modified: ${file.lastModified}`); // e.g 1552830408824
-}
-</script>
-```
-
-```smart
-The input may select multiple files, so `input.files` is an array-like object with them. Here we have only one file, so we just take `input.files[0]`.
-```
-
-## FileReader
-
-[FileReader](https://www.w3.org/TR/FileAPI/#dfn-filereader) is an object with the sole purpose of reading data from `Blob` (and hence `File` too) objects.
+function shoct with the sole purpose of reading data from `Blob` (and hence `File` too) objects.
 
 It delivers the data using events, as reading from disk may take time.
 
